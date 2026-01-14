@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
             const result = await user.save()
 
             // Send Verification Email
-            const verificationUrl = `http://localhost:3000/verify/${verificationToken}`;
+            const verificationUrl = `https://mernfront-dmoz.onrender.com/verify/${verificationToken}`;
             await transporter.sendMail({
                 from: 'n1775201@gmail.com',
                 to: email,
@@ -117,7 +117,7 @@ router.post('/resend-verification', async (req, res) => {
         user.verificationTokenExpires = verificationTokenExpires;
         await user.save();
 
-        const verificationUrl = `http://localhost:3000/verify/${verificationToken}`;
+        const verificationUrl = `https://mernfront-dmoz.onrender.com/verify/${verificationToken}`;
         await transporter.sendMail({
             from: 'n1775201@gmail.com',
             to: email,
@@ -148,7 +148,7 @@ router.post('/forgot-password', async (req, res) => {
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         await user.save();
 
-        const resetUrl = `http://localhost:3000/reset-password/${token}`;
+        const resetUrl = `https://mernfront-dmoz.onrender.com/reset-password/${token}`;
         await transporter.sendMail({
             from: 'n1775201@gmail.com',
             to: email,
