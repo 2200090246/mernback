@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
             const result = await user.save()
 
             // Send Verification Email
-            const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+            const frontendUrl = process.env.FRONTEND_URL || 'https://mernfront-dmoz.onrender.com';
             const verificationUrl = `${frontendUrl}/verify/${verificationToken}`;
             await transporter.sendMail({
                 from: 'n1775201@gmail.com',
@@ -118,7 +118,7 @@ router.post('/resend-verification', async (req, res) => {
         user.verificationTokenExpires = verificationTokenExpires;
         await user.save();
 
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const frontendUrl = process.env.FRONTEND_URL || 'https://mernfront-dmoz.onrender.com';
         const verificationUrl = `${frontendUrl}/verify/${verificationToken}`;
         await transporter.sendMail({
             from: 'n1775201@gmail.com',
@@ -150,7 +150,7 @@ router.post('/forgot-password', async (req, res) => {
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         await user.save();
 
-        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const frontendUrl = process.env.FRONTEND_URL || 'https://mernfront-dmoz.onrender.com';
         const resetUrl = `${frontendUrl}/reset-password/${token}`;
         await transporter.sendMail({
             from: 'n1775201@gmail.com',
