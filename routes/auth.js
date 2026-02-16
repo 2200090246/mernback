@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
         // Send email (do not fail signup if mail fails)
         try {
             await transporter.sendMail({
-                from: process.env.EMAIL_USER,
+                from: process.env.EMAIL_FROM,
                 to: email,
                 subject: 'Verify your email',
                 html: `
@@ -153,7 +153,7 @@ router.post('/resend-verification', async (req, res) => {
 
         try {
             await transporter.sendMail({
-                from: process.env.EMAIL_USER,
+                from: process.env.EMAIL_FROM,
                 to: email,
                 subject: 'Resend: Verify your email',
                 html: `
@@ -195,7 +195,7 @@ router.post('/forgot-password', async (req, res) => {
 
         try {
             await transporter.sendMail({
-                from: process.env.EMAIL_USER,
+                from: process.env.EMAIL_FROM,
                 to: email,
                 subject: 'Password Reset Request',
                 html: `

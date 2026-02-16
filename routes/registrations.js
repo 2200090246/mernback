@@ -21,7 +21,7 @@ router.post('/register-event', async (req, res) => {
         if (user && event) {
             try {
                 await transporter.sendMail({
-                    from: process.env.EMAIL_USER,
+                    from: process.env.EMAIL_FROM,
                     to: user.email,
                     subject: `Registration Confirmed: ${event.name}`,
                     html: `<h3>You have successfully registered for ${event.name}</h3>
@@ -52,7 +52,7 @@ router.post('/unregister-event', async (req, res) => {
             if (user && event) {
                 try {
                     await transporter.sendMail({
-                        from: process.env.EMAIL_USER,
+                        from: process.env.EMAIL_FROM,
                         to: user.email,
                         subject: `Registration Cancelled: ${event.name}`,
                         html: `<h3>You have successfully unregistered from ${event.name}</h3>
