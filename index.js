@@ -13,10 +13,9 @@ app.use(require('./routes/auth'));
 app.use(require('./routes/events'));
 app.use(require('./routes/registrations'));
 
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(5000, () => {
-        console.log("Server is running on port 5000");
-    });
-}
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
 
 module.exports = app;
